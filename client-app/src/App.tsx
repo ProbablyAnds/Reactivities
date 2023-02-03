@@ -6,7 +6,8 @@ import { Button, Header, List, ListItem } from 'semantic-ui-react';
 
  
 
-function App() {
+function App() 
+{
   const [activities, setActivities] = useState([]);
 
   useEffect(() => {
