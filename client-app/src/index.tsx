@@ -1,11 +1,12 @@
 import ReactDOM from 'react-dom';
-import App from './app/Layout/App';
+import { RouterProvider } from 'react-router-dom';
+import { router } from './app/router/Routes';
 import { store, StoreContext } from './app/stores/store';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <StoreContext.Provider value={store}>
-  <App />
+  <RouterProvider router={router} />
   </StoreContext.Provider>,
   document.getElementById('root')
 );
