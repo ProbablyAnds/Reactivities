@@ -1,3 +1,4 @@
+using API.Controllers.Middleware;
 using API.Extentions;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
@@ -12,6 +13,8 @@ builder.Services.AddApplicationServices(builder.Configuration);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+app.UseMiddleware<ExceptionMiddleware>();
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -32,7 +35,7 @@ var services = scope.ServiceProvider;
 try
 {
     var context = services.GetRequiredService<DataContext>();
-    context.Database.Migrate();
+    await context.Database.MigrateAsync();
     await Seed.SeedData(context);
 }
 catch (Exception ex)

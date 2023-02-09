@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Grid, GridColumn } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/Layout/LoadingComponent';
 import { useStore } from '../../../app/stores/store';
+import ActivityFilters from './ActivityFilters';
 import ActivityList from './activityList';
 
 export default observer (function ActivityDashboard() {
@@ -16,14 +17,13 @@ export default observer (function ActivityDashboard() {
   
     if (activityStore.loadingInitial) return <LoadingComponent content='Loading app'/>
  
-    const {selectedActivity, editMode} = activityStore
     return (
         <Grid>
             <Grid.Column width='10'>
-                <ActivityList />
+            <ActivityList />
             </Grid.Column>
             <GridColumn width='6'>
-                <h2>Activty filters</h2>
+                <ActivityFilters />
             </GridColumn>
         </Grid>
     )
